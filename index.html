@@ -1,0 +1,1313 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-default>Trace Chain - Blockchain Supply Chain Transparency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .universe-bg {
+        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+        position: relative;
+      }
+      
+      .universe-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+          radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+          radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+          radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+          radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+        background-repeat: repeat;
+        background-size: 200px 100px;
+        animation: sparkle 20s linear infinite;
+      }
+      
+      .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 3s infinite;
+      }
+      
+      .star-1 { width: 2px; height: 2px; top: 10%; left: 10%; animation-delay: 0s; }
+      .star-2 { width: 1px; height: 1px; top: 20%; left: 20%; animation-delay: 0.5s; }
+      .star-3 { width: 3px; height: 3px; top: 30%; left: 30%; animation-delay: 1s; }
+      .star-4 { width: 2px; height: 2px; top: 40%; left: 40%; animation-delay: 1.5s; }
+      .star-5 { width: 1px; height: 1px; top: 50%; left: 50%; animation-delay: 2s; }
+      .star-6 { width: 2px; height: 2px; top: 60%; left: 60%; animation-delay: 2.5s; }
+      .star-7 { width: 1px; height: 1px; top: 70%; left: 70%; animation-delay: 3s; }
+      .star-8 { width: 3px; height: 3px; top: 80%; left: 80%; animation-delay: 0.2s; }
+      .star-9 { width: 2px; height: 2px; top: 15%; left: 85%; animation-delay: 0.7s; }
+      .star-10 { width: 1px; height: 1px; top: 25%; left: 75%; animation-delay: 1.2s; }
+      .star-11 { width: 2px; height: 2px; top: 35%; left: 65%; animation-delay: 1.7s; }
+      .star-12 { width: 1px; height: 1px; top: 45%; left: 55%; animation-delay: 2.2s; }
+      .star-13 { width: 3px; height: 3px; top: 55%; left: 45%; animation-delay: 2.7s; }
+      .star-14 { width: 2px; height: 2px; top: 65%; left: 35%; animation-delay: 0.3s; }
+      .star-15 { width: 1px; height: 1px; top: 75%; left: 25%; animation-delay: 0.8s; }
+      .star-16 { width: 2px; height: 2px; top: 85%; left: 15%; animation-delay: 1.3s; }
+      .star-17 { width: 1px; height: 1px; top: 5%; left: 95%; animation-delay: 1.8s; }
+      .star-18 { width: 3px; height: 3px; top: 90%; left: 5%; animation-delay: 2.3s; }
+      .star-19 { width: 2px; height: 2px; top: 12%; left: 60%; animation-delay: 2.8s; }
+      .star-20 { width: 1px; height: 1px; top: 88%; left: 40%; animation-delay: 0.4s; }
+      
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      
+      @keyframes sparkle {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-200px); }
+      }
+      
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      
+      .blockchain-grid {
+        background-image: 
+          linear-gradient(rgba(102, 126, 234, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(102, 126, 234, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+      }
+      
+      .pulse-ring {
+        animation: pulse-ring 2s infinite;
+      }
+      
+      @keyframes pulse-ring {
+        0% {
+          transform: scale(0.8);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(2.4);
+          opacity: 0;
+        }
+      }
+      
+      .float-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+      
+      .typing-animation {
+        overflow: hidden;
+        border-right: 2px solid #667eea;
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+      
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+      }
+      
+      @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: #667eea; }
+      }
+
+      .page {
+        display: none;
+      }
+      
+      .page.active {
+        display: block;
+      }
+
+      .sidebar-nav a.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .nav-link.active {
+        color: #667eea !important;
+        border-bottom: 2px solid #667eea;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 overflow-x-hidden">
+    <div id="root">
+      <!-- HOME PAGE -->
+      <div id="home-page" class="page active">
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full z-50 glass-effect">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+              <div class="flex items-center space-x-3">
+                <div class="relative">
+                  <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                  <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full pulse-ring"></div>
+                </div>
+                <span class="text-xl font-bold text-white">Trace Chain</span>
+              </div>
+              
+              <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="nav-link text-white/80 hover:text-white transition-colors active" onclick="showPage('home-page')">Home</a>
+                <a href="#" class="nav-link text-white/80 hover:text-white transition-colors" onclick="showPage('tracking-page')">Tracking</a>
+                <a href="#" class="nav-link text-white/80 hover:text-white transition-colors" onclick="showPage('reviews-page')">Reviews</a>
+                <a href="#" class="nav-link text-white/80 hover:text-white transition-colors" onclick="showPage('analytics-page')">Analytics</a>
+                <button class="bg-white/20 text-white px-6 py-2 rounded-full hover:bg-white/30 transition-all backdrop-blur-sm" onclick="showPage('dashboard-page')">
+                  Dashboard
+                </button>
+              </div>
+              
+              <button class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="relative min-h-screen universe-bg flex items-center justify-center overflow-hidden">
+          <!-- Animated Stars -->
+          <div class="absolute inset-0 overflow-hidden">
+            <div class="star star-1"></div>
+            <div class="star star-2"></div>
+            <div class="star star-3"></div>
+            <div class="star star-4"></div>
+            <div class="star star-5"></div>
+            <div class="star star-6"></div>
+            <div class="star star-7"></div>
+            <div class="star star-8"></div>
+            <div class="star star-9"></div>
+            <div class="star star-10"></div>
+            <div class="star star-11"></div>
+            <div class="star star-12"></div>
+            <div class="star star-13"></div>
+            <div class="star star-14"></div>
+            <div class="star star-15"></div>
+            <div class="star star-16"></div>
+            <div class="star star-17"></div>
+            <div class="star star-18"></div>
+            <div class="star star-19"></div>
+            <div class="star star-20"></div>
+          </div>
+          
+          <!-- Floating Cosmic Elements -->
+          <div class="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-purple-400/20 to-blue-400/20 rounded-full float-animation backdrop-blur-sm"></div>
+          <div class="absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-full float-animation backdrop-blur-sm" style="animation-delay: -2s;"></div>
+          <div class="absolute bottom-40 left-20 w-12 h-12 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full float-animation backdrop-blur-sm" style="animation-delay: -4s;"></div>
+          
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="mb-8">
+              <div class="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-white/90 text-sm font-medium backdrop-blur-sm mb-6">
+                🚀 Revolutionary Blockchain Technology
+              </div>
+              
+              <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                <span class="bg-gradient-to-r from-emerald-400 via-teal-500 to-blue-500 bg-clip-text text-transparent drop-shadow-2xl">Transparent Supply Chains</span>
+                <br />
+                <span class="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
+                  Powered by Blockchain
+                </span>
+              </h1>
+              
+              <div class="typing-animation text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto">
+                Track every step of your product's journey from origin to consumer with immutable blockchain records
+              </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <button class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl" onclick="showPage('tracking-page')">
+                🔍 Start Tracking
+              </button>
+              <button class="glass-effect text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all" onclick="showPage('dashboard-page')">
+                📊 View Dashboard
+              </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              <div class="text-center">
+                <div class="text-3xl md:text-4xl font-bold text-white mb-2">50K+</div>
+                <div class="text-white/80 text-sm">Products Tracked</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl md:text-4xl font-bold text-white mb-2">99.9%</div>
+                <div class="text-white/80 text-sm">Verification Rate</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
+                <div class="text-white/80 text-sm">Partner Companies</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl md:text-4xl font-bold text-white mb-2">75</div>
+                <div class="text-white/80 text-sm">Countries</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-20 bg-gray-50">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Advanced blockchain technology meets intuitive design for complete supply chain transparency
+              </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Feature Cards -->
+              <div class="bg-white rounded-2xl p-8 card-hover shadow-lg cursor-pointer" onclick="showPage('tracking-page')">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Real-Time Tracking</h3>
+                <p class="text-gray-600 mb-4">Monitor your products in real-time with GPS tracking and instant notifications.</p>
+                <div class="text-blue-600 font-semibold">Start Tracking →</div>
+              </div>
+              
+              <div class="bg-white rounded-2xl p-8 card-hover shadow-lg cursor-pointer" onclick="showPage('analytics-page')">
+                <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Analytics Dashboard</h3>
+                <p class="text-gray-600 mb-4">Comprehensive analytics and reporting tools to optimize performance.</p>
+                <div class="text-green-600 font-semibold">View Analytics →</div>
+              </div>
+              
+              <div class="bg-white rounded-2xl p-8 card-hover shadow-lg cursor-pointer" onclick="showPage('reviews-page')">
+                <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Customer Reviews</h3>
+                <p class="text-gray-600 mb-4">Read authentic reviews and feedback from verified customers.</p>
+                <div class="text-purple-600 font-semibold">View Reviews →</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- DASHBOARD PAGE -->
+      <div id="dashboard-page" class="page">
+        <div class="flex h-screen bg-gray-100">
+          <!-- Sidebar -->
+          <div class="w-64 bg-white shadow-lg">
+            <div class="p-6">
+              <div class="flex items-center space-x-3 mb-8">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <span class="text-xl font-bold text-gray-900">Trace Chain</span>
+              </div>
+              
+              <nav class="sidebar-nav space-y-2">
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 active" onclick="showDashboardSection('overview')">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                  </svg>
+                  <span>Overview</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100" onclick="showDashboardSection('products')">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h12a1 1 0 001-1V7l-7-5zM6 9a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z"/>
+                  </svg>
+                  <span>Products</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100" onclick="showDashboardSection('shipments')">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z"/>
+                  </svg>
+                  <span>Shipments</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100" onclick="showDashboardSection('suppliers')">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                  </svg>
+                  <span>Suppliers</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100" onclick="showPage('home-page')">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                  </svg>
+                  <span>Back to Home</span>
+                </a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Main Content -->
+          <div class="flex-1 overflow-auto">
+            <!-- Dashboard Overview -->
+            <div id="dashboard-overview" class="dashboard-section">
+              <div class="p-8">
+                <div class="mb-8">
+                  <h1 class="text-3xl font-bold text-gray-900 mb-2">Dashboard Overview</h1>
+                  <p class="text-gray-600">Welcome back! Here's what's happening with your supply chain.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                  <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-sm font-medium text-gray-600">Total Products</p>
+                        <p class="text-2xl font-bold text-gray-900">1,247</p>
+                      </div>
+                      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h12a1 1 0 001-1V7l-7-5z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-sm">
+                      <span class="text-green-600 font-medium">+12%</span>
+                      <span class="text-gray-600 ml-2">from last month</span>
+                    </div>
+                  </div>
+
+                  <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-sm font-medium text-gray-600">Active Shipments</p>
+                        <p class="text-2xl font-bold text-gray-900">89</p>
+                      </div>
+                      <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-sm">
+                      <span class="text-green-600 font-medium">+5%</span>
+                      <span class="text-gray-600 ml-2">from last week</span>
+                    </div>
+                  </div>
+
+                  <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-sm font-medium text-gray-600">Verified Suppliers</p>
+                        <p class="text-2xl font-bold text-gray-900">156</p>
+                      </div>
+                      <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-sm">
+                      <span class="text-green-600 font-medium">+8%</span>
+                      <span class="text-gray-600 ml-2">from last month</span>
+                    </div>
+                  </div>
+
+                  <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-sm font-medium text-gray-600">Blockchain Verifications</p>
+                        <p class="text-2xl font-bold text-gray-900">99.9%</p>
+                      </div>
+                      <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-sm">
+                      <span class="text-green-600 font-medium">+0.1%</span>
+                      <span class="text-gray-600 ml-2">from last month</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-xl shadow-sm">
+                  <div class="p-6 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-900">Recent Activity</h2>
+                  </div>
+                  <div class="p-6">
+                    <div class="space-y-4">
+                      <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                          </svg>
+                        </div>
+                        <div class="flex-1">
+                          <p class="text-sm font-medium text-gray-900">Product CF2024-001 verified</p>
+                          <p class="text-sm text-gray-500">2 minutes ago</p>
+                        </div>
+                      </div>
+                      <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                          <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8z"/>
+                          </svg>
+                        </div>
+                        <div class="flex-1">
+                          <p class="text-sm font-medium text-gray-900">Shipment SH-789 departed from warehouse</p>
+                          <p class="text-sm text-gray-500">15 minutes ago</p>
+                        </div>
+                      </div>
+                      <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                          <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          </svg>
+                        </div>
+                        <div class="flex-1">
+                          <p class="text-sm font-medium text-gray-900">New supplier "GreenTech Solutions" added</p>
+                          <p class="text-sm text-gray-500">1 hour ago</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="dashboard-products" class="dashboard-section" style="display: none;">
+              <div class="p-8">
+                <div class="mb-8">
+                  <h1 class="text-3xl font-bold text-gray-900 mb-2">Products</h1>
+                  <p class="text-gray-600">Manage and track all your products in the supply chain.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm">
+                  <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                      <h2 class="text-lg font-semibold text-gray-900">Product Inventory</h2>
+                      <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Add Product
+                      </button>
+                    </div>
+                  </div>
+                  <div class="overflow-x-auto">
+                    <table class="w-full">
+                      <thead class="bg-gray-50">
+                        <tr>
+                          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product ID</th>
+                          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Updated</th>
+                        </tr>
+                      </thead>
+                      <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">CF2024-001</td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Organic Coffee Beans</td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Food & Beverage</td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Verified</span>
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2 minutes ago</td>
+                        </tr>
+                        <tr>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">PH-7829</td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Vitamin D Supplements</td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Pharmaceuticals</td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">In Transit</span>
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15 minutes ago</td>
+                        </tr>
+                        <tr>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">EC-9901</td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Smartphone Components</td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Electronics</td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Verified</span>
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1 hour ago</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Other dashboard sections would go here -->
+            <div id="dashboard-shipments" class="dashboard-section" style="display: none;">
+              <div class="p-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Shipments</h1>
+                <p class="text-gray-600">Track all active and completed shipments.</p>
+                <!-- Shipments content -->
+              </div>
+            </div>
+
+            <div id="dashboard-suppliers" class="dashboard-section" style="display: none;">
+              <div class="p-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Suppliers</h1>
+                <p class="text-gray-600">Manage your verified supplier network.</p>
+                <!-- Suppliers content -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRACKING PAGE -->
+      <div id="tracking-page" class="page">
+        <nav class="bg-white shadow-sm border-b">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <span class="text-xl font-bold text-gray-900">Trace Chain</span>
+              </div>
+              
+              <div class="flex items-center space-x-8">
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('home-page')">Home</a>
+                <a href="#" class="nav-link text-blue-600 font-medium active">Tracking</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('reviews-page')">Reviews</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('analytics-page')">Analytics</a>
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="showPage('dashboard-page')">
+                  Dashboard
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Product Tracking</h1>
+            <p class="text-xl text-gray-600">Enter product ID, batch number, or scan QR code for complete transparency</p>
+          </div>
+          
+          <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-4 p-2 bg-gray-100 rounded-2xl mb-8">
+              <div class="flex-1 relative">
+                <input 
+                  type="text" 
+                  placeholder="Enter product ID, batch number, or QR code..." 
+                  class="w-full px-6 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-blue-500 text-lg"
+                  id="trackingInput"
+                />
+                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 text-gray-400 hover:text-blue-600">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M12 12h-4.01M12 12v4m6-4h.01M12 8h.01M12 8h4.01M12 8H8.01"></path>
+                  </svg>
+                </button>
+              </div>
+              <button 
+                class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all transform hover:scale-105"
+                onclick="handleTracking()"
+              >
+                🔍 Track Product
+              </button>
+            </div>
+
+            <!-- Tracking Results -->
+            <div id="tracking-results" class="hidden">
+              <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                  <h2 class="text-2xl font-bold text-gray-900">Product Journey</h2>
+                  <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">✅ Verified</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h12a1 1 0 001-1V7l-7-5z"/>
+                      </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Origin</h3>
+                    <p class="text-gray-600 text-sm">Farm in Colombia</p>
+                    <p class="text-gray-500 text-xs">Jan 15, 2024</p>
+                  </div>
+                  
+                  <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg class="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8z"/>
+                      </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Processing</h3>
+                    <p class="text-gray-600 text-sm">Roasting Facility</p>
+                    <p class="text-gray-500 text-xs">Jan 20, 2024</p>
+                  </div>
+                  
+                  <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                      </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Distribution</h3>
+                    <p class="text-gray-600 text-sm">Warehouse NYC</p>
+                    <p class="text-gray-500 text-xs">Jan 25, 2024</p>
+                  </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="border-l-2 border-gray-200 ml-4 pl-8 space-y-6">
+                  <div class="relative">
+                    <div class="absolute -left-10 w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                      <h4 class="font-semibold text-gray-900">Product Harvested</h4>
+                      <p class="text-gray-600 text-sm">Organic coffee beans harvested from certified farm in Colombia</p>
+                      <p class="text-gray-500 text-xs mt-2">Jan 15, 2024 - 08:30 AM</p>
+                    </div>
+                  </div>
+                  
+                  <div class="relative">
+                    <div class="absolute -left-10 w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                      <h4 class="font-semibold text-gray-900">Quality Inspection Passed</h4>
+                      <p class="text-gray-600 text-sm">All quality standards met, certified organic</p>
+                      <p class="text-gray-500 text-xs mt-2">Jan 16, 2024 - 02:15 PM</p>
+                    </div>
+                  </div>
+                  
+                  <div class="relative">
+                    <div class="absolute -left-10 w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                      <h4 class="font-semibold text-gray-900">Shipped to Processing</h4>
+                      <p class="text-gray-600 text-sm">Transported to roasting facility via certified carrier</p>
+                      <p class="text-gray-500 text-xs mt-2">Jan 18, 2024 - 06:00 AM</p>
+                    </div>
+                  </div>
+                  
+                  <div class="relative">
+                    <div class="absolute -left-10 w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <div class="bg-blue-50 rounded-lg p-4">
+                      <h4 class="font-semibold text-gray-900">Currently in Distribution</h4>
+                      <p class="text-gray-600 text-sm">Product is at distribution center, ready for retail</p>
+                      <p class="text-gray-500 text-xs mt-2">Jan 25, 2024 - 10:45 AM</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="flex flex-wrap gap-2 justify-center">
+              <button class="px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm hover:bg-blue-100 transition-colors" onclick="fillTrackingSample('CF2024-001')">
+                📱 Try Sample: CF2024-001
+              </button>
+              <button class="px-4 py-2 bg-green-50 text-green-600 rounded-full text-sm hover:bg-green-100 transition-colors" onclick="fillTrackingSample('PH-7829')">
+                💊 Pharma: PH-7829
+              </button>
+              <button class="px-4 py-2 bg-purple-50 text-purple-600 rounded-full text-sm hover:bg-purple-100 transition-colors" onclick="fillTrackingSample('EC-9901')">
+                ⚡ Electronics: EC-9901
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEWS PAGE -->
+      <div id="reviews-page" class="page">
+        <nav class="bg-white shadow-sm border-b">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <span class="text-xl font-bold text-gray-900">Trace Chain</span>
+              </div>
+              
+              <div class="flex items-center space-x-8">
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('home-page')">Home</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('tracking-page')">Tracking</a>
+                <a href="#" class="nav-link text-purple-600 font-medium active">Reviews</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('analytics-page')">Analytics</a>
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="showPage('dashboard-page')">
+                  Dashboard
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Customer Reviews</h1>
+            <p class="text-xl text-gray-600">Authentic feedback from verified customers in our supply chain</p>
+          </div>
+
+          <!-- Review Stats -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+              <div class="text-3xl font-bold text-gray-900 mb-2">4.8</div>
+              <div class="flex justify-center mb-2">
+                <div class="flex text-yellow-400">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                </div>
+              </div>
+              <p class="text-gray-600 text-sm">Average Rating</p>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+              <div class="text-3xl font-bold text-gray-900 mb-2">2,847</div>
+              <p class="text-gray-600 text-sm">Total Reviews</p>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+              <div class="text-3xl font-bold text-gray-900 mb-2">94%</div>
+              <p class="text-gray-600 text-sm">Verified Purchases</p>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+              <div class="text-3xl font-bold text-gray-900 mb-2">98%</div>
+              <p class="text-gray-600 text-sm">Would Recommend</p>
+            </div>
+          </div>
+
+          <!-- Reviews List -->
+          <div class="space-y-6">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
+                  JD
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-semibold text-gray-900">John Doe</h3>
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">✅ Verified Purchase</span>
+                      <span class="text-gray-500 text-sm">2 days ago</span>
+                    </div>
+                  </div>
+                  <div class="flex text-yellow-400 mb-3">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  </div>
+                  <p class="text-gray-700 mb-3">
+                    "Amazing transparency! I could track my organic coffee from the farm in Colombia all the way to my doorstep. The blockchain verification gave me complete confidence in the product's authenticity. Highly recommend!"
+                  </p>
+                  <div class="flex items-center space-x-4 text-sm text-gray-500">
+                    <span>Product: CF2024-001</span>
+                    <span>•</span>
+                    <span>Organic Coffee Beans</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center text-white font-semibold">
+                  SM
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-semibold text-gray-900">Sarah Miller</h3>
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">✅ Verified Purchase</span>
+                      <span class="text-gray-500 text-sm">1 week ago</span>
+                    </div>
+                  </div>
+                  <div class="flex text-yellow-400 mb-3">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  </div>
+                  <p class="text-gray-700 mb-3">
+                    "The pharmaceutical tracking is incredible. I could verify every step of my medication's journey and confirm it was stored at the right temperature throughout. This level of transparency is exactly what healthcare needs."
+                  </p>
+                  <div class="flex items-center space-x-4 text-sm text-gray-500">
+                    <span>Product: PH-7829</span>
+                    <span>•</span>
+                    <span>Vitamin D Supplements</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-semibold">
+                  MJ
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-semibold text-gray-900">Mike Johnson</h3>
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">✅ Verified Purchase</span>
+                      <span class="text-gray-500 text-sm">2 weeks ago</span>
+                    </div>
+                  </div>
+                  <div class="flex text-yellow-400 mb-3">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  </div>
+                  <p class="text-gray-700 mb-3">
+                    "As a tech enthusiast, I love being able to verify the authenticity of electronic components. The blockchain verification prevented me from buying counterfeit parts. This is the future of supply chain management!"
+                  </p>
+                  <div class="flex items-center space-x-4 text-sm text-gray-500">
+                    <span>Product: EC-9901</span>
+                    <span>•</span>
+                    <span>Smartphone Components</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALYTICS PAGE -->
+      <div id="analytics-page" class="page">
+        <nav class="bg-white shadow-sm border-b">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <span class="text-xl font-bold text-gray-900">Trace Chain</span>
+              </div>
+              
+              <div class="flex items-center space-x-8">
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('home-page')">Home</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('tracking-page')">Tracking</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-gray-900 transition-colors" onclick="showPage('reviews-page')">Reviews</a>
+                <a href="#" class="nav-link text-green-600 font-medium active">Analytics</a>
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="showPage('dashboard-page')">
+                  Dashboard
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Supply Chain Analytics</h1>
+            <p class="text-xl text-gray-600">Comprehensive insights and performance metrics for your supply chain</p>
+          </div>
+
+          <!-- Key Metrics -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-gray-600">Total Transactions</p>
+                  <p class="text-3xl font-bold text-gray-900">847,392</p>
+                </div>
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center text-sm">
+                <span class="text-green-600 font-medium">+18%</span>
+                <span class="text-gray-600 ml-2">from last month</span>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-gray-600">Average Transit Time</p>
+                  <p class="text-3xl font-bold text-gray-900">4.2 days</p>
+                </div>
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center text-sm">
+                <span class="text-green-600 font-medium">-12%</span>
+                <span class="text-gray-600 ml-2">improvement</span>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-gray-600">Supply Chain Efficiency</p>
+                  <p class="text-3xl font-bold text-gray-900">94.7%</p>
+                </div>
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center text-sm">
+                <span class="text-green-600 font-medium">+2.3%</span>
+                <span class="text-gray-600 ml-2">from last quarter</span>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-gray-600">Cost Savings</p>
+                  <p class="text-3xl font-bold text-gray-900">$2.4M</p>
+                </div>
+                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center text-sm">
+                <span class="text-green-600 font-medium">+15%</span>
+                <span class="text-gray-600 ml-2">this year</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-gray-900 mb-4">Monthly Transaction Volume</h3>
+              <div class="h-64 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg flex items-center justify-center">
+                <div class="text-center">
+                  <svg class="w-16 h-16 text-blue-500 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                  </svg>
+                  <p class="text-gray-600">Interactive Chart</p>
+                  <p class="text-sm text-gray-500">Showing 18% growth trend</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-gray-900 mb-4">Supply Chain Performance</h3>
+              <div class="h-64 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg flex items-center justify-center">
+                <div class="text-center">
+                  <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                  </svg>
+                  <p class="text-gray-600">Performance Metrics</p>
+                  <p class="text-sm text-gray-500">94.7% efficiency rate</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Performing Products -->
+          <div class="bg-white rounded-xl shadow-sm">
+            <div class="p-6 border-b border-gray-200">
+              <h2 class="text-lg font-semibold text-gray-900">Top Performing Products</h2>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Transactions</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg Transit Time</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Success Rate</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                          <span class="text-green-600">🌾</span>
+                        </div>
+                        <div>
+                          <div class="text-sm font-medium text-gray-900">Organic Coffee Beans</div>
+                          <div class="text-sm text-gray-500">CF2024-001</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Food & Beverage</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">12,847</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">3.2 days</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">99.8%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                          <span class="text-blue-600">💊</span>
+                        </div>
+                        <div>
+                          <div class="text-sm font-medium text-gray-900">Vitamin D Supplements</div>
+                          <div class="text-sm text-gray-500">PH-7829</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Pharmaceuticals</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">8,234</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2.8 days</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">99.9%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                          <span class="text-purple-600">⚡</span>
+                        </div>
+                        <div>
+                          <div class="text-sm font-medium text-gray-900">Smartphone Components</div>
+                          <div class="text-sm text-gray-500">EC-9901</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Electronics</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">15,691</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5.1 days</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">98.7%</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Page Navigation
+      function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+          page.classList.remove('active');
+        });
+        
+        // Show selected page
+        document.getElementById(pageId).classList.add('active');
+        
+        // Update navigation active states
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('active');
+        });
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      // Dashboard Navigation
+      function showDashboardSection(sectionId) {
+        // Hide all dashboard sections
+        document.querySelectorAll('.dashboard-section').forEach(section => {
+          section.style.display = 'none';
+        });
+        
+        // Show selected section
+        document.getElementById('dashboard-' + sectionId).style.display = 'block';
+        
+        // Update sidebar active states
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+          link.classList.remove('active');
+        });
+        
+        event.target.classList.add('active');
+      }
+
+      // Tracking functionality
+      function handleTracking() {
+        const input = document.getElementById('trackingInput');
+        const query = input.value.trim();
+        
+        if (query) {
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '🔄 Searching...';
+          button.disabled = true;
+          
+          setTimeout(() => {
+            document.getElementById('tracking-results').classList.remove('hidden');
+            button.innerHTML = originalText;
+            button.disabled = false;
+            
+            // Scroll to results
+            document.getElementById('tracking-results').scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 2000);
+        } else {
+          alert('Please enter a product ID, batch number, or QR code to track.');
+        }
+      }
+      
+      // Fill tracking sample data
+      function fillTrackingSample(sampleId) {
+        document.getElementById('trackingInput').value = sampleId;
+      }
+      
+      // Enter key support for tracking
+      document.addEventListener('DOMContentLoaded', function() {
+        const trackingInput = document.getElementById('trackingInput');
+        if (trackingInput) {
+          trackingInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+              handleTracking();
+            }
+          });
+        }
+      });
+
+      // Search functionality (for home page)
+      function handleSearch() {
+        const input = document.getElementById('searchInput');
+        if (!input) return;
+        
+        const query = input.value.trim();
+        
+        if (query) {
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '🔄 Searching...';
+          button.disabled = true;
+          
+          setTimeout(() => {
+            alert(`🎉 Product found!\n\nProduct ID: ${query}\nStatus: ✅ Verified\nLocation: Distribution Center\nLast Update: 2 minutes ago\n\nBlockchain Hash: 0x7a8b...9c2d`);
+            button.innerHTML = originalText;
+            button.disabled = false;
+          }, 2000);
+        } else {
+          alert('Please enter a product ID, batch number, or QR code to track.');
+        }
+      }
+      
+      // Fill sample data (for home page)
+      function fillSample(sampleId) {
+        const input = document.getElementById('searchInput');
+        if (input) {
+          input.value = sampleId;
+        }
+      }
+      
+      // Enter key support for home page search
+      document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+          searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+              handleSearch();
+            }
+          });
+        }
+      });
+    </script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'972fd3ae25ac8374',t:'MTc1NTgzOTA0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
